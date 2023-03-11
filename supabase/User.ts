@@ -26,10 +26,29 @@ const sign_in = async (user: any) => {
   });
   return {
     data,
-    error
-  }
+    error,
+  };
 };
-export default { 
-    sign_in,
-    sign_up
- };
+
+/**
+ * 
+ * @param username username
+ * @returns schema {data: [{id, username}], error: error}
+ */
+
+const find = async (username: any) => {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id, username')
+    .eq('username', username);
+  return {
+    data,
+    error,
+  };
+};
+
+export default {
+  sign_in,
+  sign_up,
+  find
+};

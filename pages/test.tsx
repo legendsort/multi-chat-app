@@ -1,9 +1,24 @@
 import UserService from '../supabase/User';
+import PromtService from '../supabase/Prompt';
 
 const SignIn = () => {
   const handleClick = async (e: any) => {
     e.preventDefault();
-    const response = await UserService.find("Sortoite");
+    
+    // test for user service find 
+    // const response = await UserService.find("Sortoite");
+    // console.log(response);
+    
+    // const prompt = {
+    //   "tag": "test s",
+    //   "price": "price 1",
+    //   "image": "image 1"
+    // }
+    // const response = await PromtService.create(prompt);
+    // console.log(response);
+
+
+    const response = await PromtService.find("test 1");
     console.log(response);
 
   };

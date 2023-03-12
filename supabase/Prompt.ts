@@ -9,12 +9,12 @@ const create = async (prompt: any) => {
   return response;
 };
 
-const find = async (tag: any) => {
+const findAll = async (tag: any) => {
   
   const { data, error } = await supabase
     .from('prompt')
     .select('id, tag, price, image')
-    .eq('tag', tag);
+    .like('tag', `%${tag}%`)
   
   return {
     data,
@@ -22,7 +22,20 @@ const find = async (tag: any) => {
   };
 };
 
+const find = async (tag: any, page_size=10, page = 1) => {
+  
+  const { data, error } = await supabase
+    .from('prompt')
+    .select('id, tag, price, image')
+    .like('tag', `%${tag}%`)
+    .limit(page_size)
+    .range((page - 1) * page_size, page * page_size - 1);
+  return {data, error}
+
+}
+
 export default {
   create,
-  find
+  find,
+  findAll
 };

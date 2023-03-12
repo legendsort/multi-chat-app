@@ -17,14 +17,16 @@ const SignIn = () => {
     // const response = await PromtService.create(prompt);
     // console.log(response);
 
+    // const response = await PromtService.findAll("test 1");
+    // console.log(response);
 
-    const response = await PromtService.find("test 1");
-    console.log(response);
+    // const response = await PromtService.find("test", 2, 2);
+    // console.log(response);
 
   };
   return (
     <div className="mx-auto flex min-h-screen max-w-2xl justify-center items-center ">
-      <input type = "button" value = "test" onClick = {handleClick} color = "red" />
+      <input className = "bg-blue-200 p-4 border-round-2" type = "button" value = "test" onClick = {handleClick} color = "red" />
     </div>
   );
 };
